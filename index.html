@@ -77,84 +77,114 @@
             font-weight: 400;
         }
 
-        /* Navigation Buttons Grid */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        /* Navigation Section */
+        .nav-section {
+            text-align: center;
             margin-top: 40px;
-            max-width: 1000px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .toggle-button {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toggle-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        }
+
+        .toggle-button:active {
+            transform: translateY(-1px);
+        }
+
+        .toggle-icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-button.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .links-container {
+            margin-top: 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .links-container.active {
+            max-height: 800px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .nav-card {
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             border-radius: 8px;
-            padding: 20px 30px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            padding: 18px 25px;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
             transition: all 0.3s ease;
             text-decoration: none;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 15px;
             border: none;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
         }
 
         .nav-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
             background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-        }
-
-        .nav-card:hover .nav-card-url {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .nav-card:active {
-            transform: translateY(-1px);
         }
 
         .nav-card-content {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .nav-card-icon {
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .nav-card-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: white;
         }
 
         .nav-card-url {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            background: rgba(0, 0, 0, 0.2);
-            padding: 6px 12px;
-            border-radius: 4px;
-            margin-top: 4px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-            word-break: break-all;
-            max-width: 100%;
+            display: none;
         }
 
         .nav-card-description {
@@ -246,55 +276,64 @@
             <p class="subtitle">Your comprehensive business management solution</p>
         </div>
 
-        <!-- Navigation Cards -->
-        <div class="nav-grid">
-            <a href="http://100.64.0.10/erp/dashboard/production/company_wise_sewing_output_display_report_riaz.php" class="nav-card" target="_blank">
-                <div class="nav-card-content">
-                    <div class="nav-card-icon">📊</div>
-                    <div class="nav-card-title">Dashboard</div>
-                </div>
-                <div class="nav-card-url">http://100.64.0.10/erp/dashboard/production/...</div>
-            </a>
+        <!-- Navigation Section -->
+        <div class="nav-section">
+            <button class="toggle-button" onclick="toggleLinks()">
+                <span class="toggle-icon">🔽</span>
+                <span>View All Pages</span>
+            </button>
+            
+            <div class="links-container" id="linksContainer">
+                <div class="nav-grid">
+                    <a href="http://100.64.0.10/erp/dashboard/production/company_wise_sewing_output_display_report_line.php" class="nav-card" target="_blank">
+                        <div class="nav-card-content">
+                            <div class="nav-card-icon">📊</div>
+                            <div class="nav-card-title">Dashboard</div>
+                        </div>
+                        <div class="nav-card-url">http://100.64.0.10/erp/dashboard/production/...</div>
+                    </a>
 
-            <a href="about.html" class="nav-card" target="_blank">
-                <div class="nav-card-content">
-                    <div class="nav-card-icon">ℹ️</div>
-                    <div class="nav-card-title">About Us</div>
-                </div>
-                <div class="nav-card-url">about.html</div>
-            </a>
+                    <a href="http://100.64.0.10/erp/dashboard/production/company_wise_sewing_output_display_report_riaz.php" class="nav-card" target="_blank">
+                        <div class="nav-card-content">
+                            <div class="nav-card-icon">ℹ️</div>
+                            <div class="nav-card-title">About Us</div>
+                        </div>
+                        <div class="nav-card-url">about.html</div>
+                    </a>
 
-            <a href="services.html" class="nav-card" target="_blank">
-                <div class="nav-card-content">
-                    <div class="nav-card-icon">⚙️</div>
-                    <div class="nav-card-title">Services</div>
-                </div>
-                <div class="nav-card-url">services.html</div>
-            </a>
+                    <a href="http://100.64.0.10/erp/dashboard/production/company_wise_sewing_output_display_report_riaz1.php" class="nav-card" target="_blank">
+                        <div class="nav-card-content">
+                            <div class="nav-card-icon">⚙️</div>
+                            <div class="nav-card-title">Services</div>
+                        </div>
+                        <div class="nav-card-url">services.html</div>
+                    </a>
 
-            <a href="projects.html" class="nav-card" target="_blank">
-                <div class="nav-card-content">
-                    <div class="nav-card-icon">📁</div>
-                    <div class="nav-card-title">Projects</div>
-                </div>
-                <div class="nav-card-url">projects.html</div>
-            </a>
+                    <a href="projects.html" class="nav-card" target="_blank">
+                        <div class="nav-card-content">
+                            <div class="nav-card-icon">📁</div>
+                            <div class="nav-card-title">Projects</div>
+                        </div>
+                        <div class="nav-card-url">projects.html</div>
+                    </a>
 
-            <a href="team.html" class="nav-card" target="_blank">
-                <div class="nav-card-content">
-                    <div class="nav-card-icon">👥</div>
-                    <div class="nav-card-title">Our Team</div>
-                </div>
-                <div class="nav-card-url">team.html</div>
-            </a>
+                    <a href="team.html" class="nav-card" target="_blank">
+                        <div class="nav-card-content">
+                            <div class="nav-card-icon">👥</div>
+                            <div class="nav-card-title">Our Team</div>
+                        </div>
+                        <div class="nav-card-url">team.html</div>
+                    </a>
 
-            <a href="contact.html" class="nav-card" target="_blank">
-                <div class="nav-card-content">
-                    <div class="nav-card-icon">📧</div>
-                    <div class="nav-card-title">Contact</div>
+                    <a href="contact.html" class="nav-card" target="_blank">
+                        <div class="nav-card-content">
+                            <div class="nav-card-icon">📧</div>
+                            <div class="nav-card-title">Contact</div>
+                        </div>
+                        <div class="nav-card-url">contact.html</div>
+                    </a>
                 </div>
-                <div class="nav-card-url">contact.html</div>
-            </a>
+            </div>
         </div>
 
         <!-- Stats Section -->
@@ -325,5 +364,23 @@
     <div class="footer">
         © 2026 Four H Group. All rights reserved.
     </div>
+
+    <script>
+        function toggleLinks() {
+            const container = document.getElementById('linksContainer');
+            const button = document.querySelector('.toggle-button');
+            
+            container.classList.toggle('active');
+            button.classList.toggle('active');
+            
+            // Update button text
+            const buttonText = button.querySelector('span:last-child');
+            if (container.classList.contains('active')) {
+                buttonText.textContent = 'Hide Pages';
+            } else {
+                buttonText.textContent = 'View All Pages';
+            }
+        }
+    </script>
 </body>
 </html>
