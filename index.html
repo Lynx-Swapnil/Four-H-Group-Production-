@@ -23,8 +23,24 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             padding: 40px 60px;
-            text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-logo {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            border-radius: 15px;
+            flex-shrink: 0;
         }
 
         .header-title {
@@ -57,11 +73,7 @@
         }
 
         .logo {
-            width: 200px;
-            height: auto;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-            border-radius: 20px;
+            display: none;
         }
 
         .welcome-text {
@@ -262,10 +274,14 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="header-title">
-            🏢 Four H Group Management Portal
+        <img src="images/logo.png" alt="Four H Group Logo" class="header-logo">
+        <div class="header-content">
+            <div class="header-title">
+                🏢 Four H Group Management Portal
+            </div>
+            <div class="header-subtitle">Real-time business monitoring and management system</div>
         </div>
-        <div class="header-subtitle">Real-time business monitoring and management system</div>
+        <div style="width: 150px;"></div>
     </div>
 
     <!-- Main Content -->
@@ -280,7 +296,7 @@
         <div class="nav-section">
             <button class="toggle-button" onclick="toggleLinks()">
                 <span class="toggle-icon">🔽</span>
-                <span>View All Pages</span>
+                <span>View All Dashboard</span>
             </button>
             
             <div class="links-container" id="linksContainer">
